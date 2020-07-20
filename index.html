@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .area {
+        height: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Snippets</h1>
+    <div>
+      <h4>Check if the Number is Even or Odd</h4>
+      <label for="eo">Enter a Number </label> <input type="Number" id="eoInp" />
+      <button type="button" name="Submit" onclick="evenOrOdd();">Submit</button>
+      <h4 class="area" id="eoOut"></h4>
+    </div>
+    <hr />
+    <div>
+      <h4>FizzBuzz - 3=Fizz, 5=Buzz, Multiple of 3 and 5=FizzBuzz</h4>
+      <label for="fizzBuzz">Enter a Number until to generate FizzBuzz</label>
+      <input type="Number" id="fbInp" />
+      <button type="button" name="Submit" onclick="fbfb();">Submit</button>
+      <h4 class="area" id="fbOut"></h4>
+    </div>
+    <hr />
+    <div>
+      <h4>Sum Elements in an Array</h4>
+      <label for="SumArray">Enter a Random Number fill the array</label>
+      <input type="Number" id="sumArrayIn" />
+      <button type="button" name="Submit" onclick="sumArray();">Submit</button>
+      <h4 class="area" id="sumArrayOut"></h4>
+    </div>
+    <hr />
+    <div>
+      <h4>Positive or Negative</h4>
+      <label for="posOrNeg"
+        >Enter Number to check if its positive or negative</label
+      >
+      <input type="Number" id="pnIn" />
+      <button type="button" name="Submit" onclick="posOrNeg();">Submit</button>
+      <h4 class="area" id="pnOut"></h4>
+    </div>
+    <hr />
+    <div>
+      <h4>Swapping two arrays</h4>
+      <label for="swapArr">Enter an Array length </label>
+      <input type="Number" id="saIn" />
+      <button type="button" name="Submit" onclick="swapArr();">Submit</button>
+      <h4 class="area" id="saOut"></h4>
+    </div>
+    <hr />
+    <div>
+      <h4>Maximum number in an Array</h4>
+      <label for="maxArr"> Enter Array Length </label>
+      <input type="Number" id="maxIn" />
+      <button type="button" name="Submit" onclick="maxArr();">Submit</button>
+      <h4 class="area" id="maxOut"></h4>
+    </div>
+    <hr />
+    <div>
+      <h4>Find Mean of an Array</h4>
+      <label for="getMean"> Enter Array Length </label>
+      <input type="Number" id="meanIn" />
+      <button type="button" name="Submit" onclick="getMean();">Submit</button>
+      <h4 class="area" id="meanOut"></h4>
+    </div>
+    <hr />
+
+    <div>
+      <h4>Find If a String has Vowels or Consonents</h4>
+      <label for="checkVowel"> Enter A String</label>
+      <input type="text" id="vcIn" />
+      <button type="button" name="Submit" onclick="checkVowel();">
+        Submit
+      </button>
+      <h4 class="area" id="vcOut"></h4>
+    </div>
+    <hr />
+    <div>
+      <h4>Find Largest Amongst Three Numbers</h4>
+      <label for="checkLargest"> Enter A number Limit</label>
+      <input type="text" id="lrIn" />
+      <button type="button" name="Submit" onclick="checkLargest();">
+        Submit
+      </button>
+      <h4 class="area" id="lrOut"></h4>
+    </div>
+    <hr />
+    <div>
+      <h4>Find if the Entered Year is a Leap Year</h4>
+      <label for="checkLeapYear"> Enter an Year</label>
+      <input type="text" id="yrIn" />
+      <button type="button" name="Submit" onclick="checkLeapYear();">
+        Submit
+      </button>
+      <h4 class="area" id="yrOut"></h4>
+    </div>
+
+    <script>
+      //////////////////////////
+      // Generic Functions Start
+      function validateNum(input, output) {
+        if (isNaN(input.value) || input.value == "") {
+          output.textContent = "Please enter a Valid Number";
+          output.style.color = "red";
+          return -1;
+        }
+        output.style.color = "black";
+      }
+
+      function getEl(el) {
+        return document.getElementById(el);
+      }
+
+      function showRes(el, res) {
+        el.textContent = "Result : " + res;
+      }
+      // Generic Functions Ends
+      //////////////////////////
+
+      function evenOrOdd() {
+        let eoInp = getEl("eoInp");
+        let eoOut = getEl("eoOut");
+
+        if (validateNum(eoInp, eoOut) == -1) return;
+
+        let result = Math.abs(eoInp.value % 2) == 0 ? "Even" : "Odd";
+        showRes(eoOut, eoInp.value + " is " + result);
+      }
+
+      /* FizzBuzz */
+      function fbfb() {
+        let fbInp = document.getElementById("fbInp");
+        let fbOut = document.getElementById("fbOut");
+        let temp,
+          result = "";
+
+        if (validateNum(fbInp, fbOut) == -1) return;
+
+        for (var i = 1; i <= fbInp.value; i++) {
+          if (i % 3 == 0 && i % 5 == 0) temp = i + "- FizzBuzz ";
+          else if (i % 3 == 0) temp = i + " - Fizz ";
+          else if (i % 5 == 0) temp = i + " - Buzz ";
+          else temp = i + "";
+          result = result + temp + " , ";
+        }
+        fbOut.textContent = "Result : " + result;
+      }
+
+      /* Sum of elements in a array */
+      function sumArray() {
+        let sumArrayIn = document.getElementById("sumArrayIn");
+        let sumArrayOut = document.getElementById("sumArrayOut");
+        let sum = 0;
+        let result = "";
+        let i = sumArrayIn.value;
+        let arr = [];
+
+        if (validateNum(sumArrayIn, sumArrayOut) == -1) return;
+
+        let randomNum = num => Math.floor(Math.random(num) * 5);
+
+        while (i > 0) {
+          i--;
+          arr.push(randomNum(sumArrayIn));
+          console.log(arr);
+        }
+        arr.forEach(x => (sum = sum + x));
+        sumArrayOut.innerHTML = "Result : Array = [" + arr + "] Sum = " + sum;
+      }
+
+      /* Negative or Positive */
+      function posOrNeg() {
+        let pnIn = getEl("pnIn");
+        let pnOut = getEl("pnOut");
+        if (validateNum(pnIn, pnOut) == -1) return;
+        let result = pnIn.value < 0 ? "Negative" : "Positive";
+        showRes(pnOut, result);
+      }
+
+      function getRanArray(num) {
+        let randomNum = num => Math.floor(Math.random() * num);
+
+        var i = num;
+        let arr = [];
+        while (i > 0) {
+          i--;
+          arr.push(randomNum(num));
+        }
+        return arr;
+      }
+
+      /*Swapping two arrays*/
+      function swapArr() {
+        let saIn = getEl("saIn");
+        let saOut = getEl("saOut");
+        let result = "";
+        if (validateNum(saIn, saOut) == -1) return;
+
+        let arr1 = getRanArray(saIn.value);
+        let arr2 = getRanArray(saIn.value);
+
+        result =
+          result +
+          "Original Arrays: arr1 = [" +
+          arr1 +
+          "], <br> arr2 = [" +
+          arr2 +
+          "]";
+
+        for (var i = 0; i < arr1.length; i++) {
+          arr1[i] = arr1[i] + arr2[i];
+          arr2[i] = arr1[i] - arr2[i];
+          arr1[i] = arr1[i] - arr2[i];
+        }
+        result =
+          result +
+          "==>Swapped Arrays : arr1 = [" +
+          arr1 +
+          "], arr2 = [" +
+          arr2 +
+          "]";
+        showRes(saOut, result);
+      }
+
+      /* Program to find the max number in an array */
+      function maxArr() {
+        let maxIn = getEl("maxIn");
+        let maxOut = getEl("maxOut");
+        if (validateNum(maxIn, maxOut) == -1) return;
+
+        let arr = getRanArray(maxIn.value);
+        let curMax = arr[0];
+        for (var i = 1; i < arr.length; i++) {
+          curMax = arr[i] > curMax ? arr[i] : curMax;
+        }
+        showRes(maxOut, "Max Number in [" + arr + "] = " + curMax);
+      }
+      /*
+           let arr = [7, 32, 9, 23, 72, 12, 63, 22, 33, 55];
+           arr = [-33, -44, -66, -1, -3, -9];
+           console.log("Max Number = " + maxNumber(arr));
+           */
+
+      //Mean of a given array of elements
+
+      function getMean() {
+        let meanIn = getEl("meanIn");
+        let meanOut = getEl("meanOut");
+        if (validateNum(meanIn, meanOut) == -1) return;
+
+        let arr = getRanArray(meanIn.value);
+        let mean = 0;
+        arr.forEach(ele => {
+          mean = Math.floor((mean + ele) / 2);
+        });
+        //return sum / 2;
+        showRes(meanOut, "Mean of [" + arr + "] = " + mean);
+      }
+      /*
+           let myarr = [1, -4, 7, -33, 66];
+           console.log(myMean(myarr));
+           */
+
+      // Check if its a Vowel or Consonent
+      function checkVowel() {
+        let vcIn = getEl("vcIn");
+        let vcOut = getEl("vcOut");
+        let vowels = ["a", "e", "i", "o", "u"];
+        let result,
+          res = "";
+        console.log(vcIn.value);
+        let inp = vcIn.value.split("");
+        console.log(inp);
+        inp.forEach(el => {
+          result = vowels.includes(el) ? "vowel" : "consonent";
+          res = res + el + " is a " + result + " | ";
+        });
+        showRes(vcOut, res);
+      }
+      //let userInput = promptz("Enter String to check Vowels and Consonents");
+      //checkVowel(userInput);
+
+      // largest number among the three numbers
+      function checkLargest() {
+        let lrIn = getEl("lrIn");
+        let lrOut = getEl("lrOut");
+        let result;
+        if (validateNum(lrIn, lrOut) == -1) return;
+
+        let randomNum = num => Math.floor(Math.random() * num.value);
+
+        let n1 = randomNum(lrIn);
+        let n2 = randomNum(lrIn);
+        let n3 = randomNum(lrIn);
+
+        if (n1 > n2) {
+          if (n1 > n3) result = n1;
+          else result = n3;
+        } else if (n2 > n3) result = n2;
+        else result = n3;
+
+        console.log(n1, n2, n3);
+        showRes(
+          lrOut,
+          "Largest Amongst " + n1 + " " + n2 + " " + n3 + " is = " + result
+        );
+      }
+
+      function checkLeapYear() {
+        let yrIn = getEl("yrIn");
+        let yrOut = getEl("yrOut");
+
+        if (validateNum(yrIn, yrOut) == -1) return;
+
+        let year = yrIn.value;
+
+        if (year % 4 == 0) {
+          if (year % 100 == 0) {
+            if (year % 400 == 0) {
+              result = "a Leap Year";
+            } else {
+              result = "Not a Leap Year";
+            }
+          } else {
+            result = "a Leap Year";
+          }
+        } else {
+          result = "Not a Leap Year";
+        }
+
+        showRes(yrOut, year + " is " + result);
+      }
+    </script>
+  </body>
+</html>
