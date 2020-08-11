@@ -1,5 +1,5 @@
 //**************************************************** */
-// To accpet a User input and display the respective
+// To Accept a User input and display the respective
 // ASCII notation in Decimal and Binary
 //**************************************************** */
 
@@ -69,4 +69,5 @@ for (var j = 0; j < userArray.length; j++) {
   //   console.log(userArray[j], asciiObj[userArray[j]], binaryUser[j]);
 }
 
+// Print Output to the Console
 console.log(binaryUser);
