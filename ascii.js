@@ -3,18 +3,19 @@
 // ASCII notation in Decimal and Binary
 //**************************************************** */
 
-//DEclar th object to store the ASCII
+//Declare and Initialize the object to store the ASCII in Decimals
 var asciiObj = {};
 
 // Function to build an ASCII Object
-// asciiObj is a global object
+// 'asciiObj' is a global object
 function buildASCII() {
   // Build a String with a subset of charactoers
   // split them into an array of characters
   var charArray = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~".split(
     ""
   );
-  // as the first element starts with a space
+  //Reference - http://www.asciitable.com/
+  // First element starts with a space
   // and the rest follows as a sequence (increment 1)
   for (var i = 0; i < charArray.length; i++) {
     asciiObj[charArray[i]] = i + 32;
@@ -37,7 +38,7 @@ function getBinary(num) {
   return arr.join("");
 }
 
-// Function to padd a number
+// Function to pad a number
 // Recursive Approach - accepts string, fixed length and value to pad
 function padNum(binNum, len, value) {
   if (binNum.length >= len) {
@@ -66,7 +67,7 @@ for (var j = 0; j < userArray.length; j++) {
   var binNum = getBinary(asciiObj[userArray[j]]);
   binaryUser.push(padNum(binNum, 8, 0));
 
-  //   console.log(userArray[j], asciiObj[userArray[j]], binaryUser[j]);
+  //console.log(userArray[j], asciiObj[userArray[j]], binaryUser[j]);
 }
 
 // Print Output to the Console
