@@ -40,8 +40,8 @@ function padNum(binNum, len, value) {
 }
 
 // Binary Full Adder - Start
-// Sum = A ⊕ B ⊕ Cin
-// Cout = AB ||  Cin (A ⊕ B)
+// Sum = b1 ⊕ b2 ⊕ Cin
+// Cout = b1 b2 ||  Cin (b1 ⊕ b2)
 function bxor(b1, b2) {
   return b1 ^ b2;
 }
