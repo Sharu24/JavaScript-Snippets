@@ -40,8 +40,8 @@ function padNum(binNum, len, value) {
 }
 
 // Binary Full Adder - Start
-// Sum = A ⊕ B XOR Cin = ( A ⊕ B ) ⊕ Cin
-// Cout = ( A && B ) || ( (A ⊕ B) && Cin )
+// Sum = A ⊕ B ⊕ Cin
+// Cout = AB ||  Cin (A ⊕ B)
 function bxor(b1, b2) {
   return b1 ^ b2;
 }
@@ -70,9 +70,9 @@ function fullAdder(b1, b2, cin) {
 // Add Two Binaries using Full Adder
 function addBin(bin1, bin2) {
   // To store the output of individual bits
-  var total = "",
-    res = [0, 0],
-    csum = [];
+  var csum = [],
+    total = "",
+    res = [0, 0];
 
   // Split the first Input into individual bits
   var b1a = bin1.split("");
@@ -112,6 +112,7 @@ function flipBin(csum) {
 
 // CheckSum - Starts
 function checkSum(binArr) {
+  // To Loop through each Binary Number
   var i = 0;
 
   // Array the store the Incremental Checksum results
