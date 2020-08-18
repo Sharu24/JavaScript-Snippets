@@ -1,5 +1,8 @@
 // jshint esversion:6
+// Chaining in Javascript
 
+// Expected Output using Chaning methods in a Object
+// Hello World
 const helloWorld = {
   str: "",
   add(subs) {
@@ -36,4 +39,4 @@ reference to the Object in which its held.
 The next function is invoked using the returned
 Object and so on... 
 
-  */
+*/
