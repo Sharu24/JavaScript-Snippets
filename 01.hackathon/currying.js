@@ -30,15 +30,19 @@ Currying utilizes
 2. A function returning another function
 
 Usage 
-1. log(date, method, message);
-    ._currying -> log(date)(method)(message)
-    now we can execut log(date) separately
+1. log(date, mode, output);
+    ._currying => log(date)(mode)(output)
+    now we can execute log(date) separately
     today = log(Date.now());
-    today('DEBUG','message1')
-    today('DEBUG','message2')
+    today('DEBUG')('message1')
+    today('ERROR')('Error1')
 2. As we can see above, we can fetch the date 
     and have a boilerplate ready for invoking
     next set of Debug statements for today.
-
+3. Furthermore we can set the mode to DEBUG
+    and have messages logged 
+    dbg = today('DEBUG')
+     dbg('message2')
+     dbg('message3')
 
 */
