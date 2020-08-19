@@ -35,10 +35,11 @@ in the same line.
 
 Each method performs a task and returns back a
 reference to the Object in which its held. 
-Using the Object the First Function is invoked and returns
+Using the Object, the First Function is invoked and returns
 the Object back; The next function in the chain is invoked 
 using the returned Object and so on... 
-Its achived by returning 'this' keyword  in every function call. 
+Returning the Object is achieved by returning 
+'this'  in every function call. 
 'this' points to the Object containing the methods.
 
 chain1 = HelloWorld.a()
